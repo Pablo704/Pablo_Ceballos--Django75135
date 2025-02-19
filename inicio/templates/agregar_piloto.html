@@ -12,7 +12,12 @@
         <a href={% url "agregar_piloto" %}>Agregar Piloto</a>
         <a href={% url "listado_de_puntos" %}>Listado</a>
     </nav>
-    <h1>INICIO</h1>
-    <p>{{hora}}</p>
+    <h1>Agregar Piloto</h1>
+    <h2>Formulario Para Agregar</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Agregar">
+    </form>
 </body>
 </html>
