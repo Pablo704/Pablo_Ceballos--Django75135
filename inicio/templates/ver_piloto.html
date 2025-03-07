@@ -1,0 +1,22 @@
+{% extends "templateBase.html" %}
+{% load static %}
+
+{% block inicio %}
+    Información de {{ piloto }}
+{% endblock %}
+
+{% block contenido %}
+    <ul>
+        <li><strong>Nombre:</strong> {{ piloto.nombre }}</li>
+        <li><strong>Equipo:</strong> {{ piloto.equipo }}</li>
+        <li><strong>Puntos:</strong> {{ piloto.puntos }}</li>
+        <li><strong>Fecha de Creación:</strong> {{ piloto.fecha_creacion }}</li>
+
+        {% if piloto.imagen %}
+            <h3>Imagen:</h3>
+            <img src="{{ piloto.imagen.url }}" alt="Imagen de {{ piloto.nombre }}" width="300">
+        {% else %}
+            <p>Este piloto no tiene imagen.</p>
+        {% endif %}
+    </ul>
+{% endblock %}

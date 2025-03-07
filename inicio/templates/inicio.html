@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "agregar_carrera" %}>Agregar Carrera</a>
-        <a href={% url "agregar_piloto" %}>Agregar Piloto</a>
-        <a href={% url "listado_de_puntos" %}>Listado</a>
-    </nav>
-    <h1>INICIO</h1>
+{% extends "templateBase.html" %}
+{% load static %}
+{% block inicio %}
     <p>{{hora}}</p>
-</body>
-</html>
+{% endblock  %}
+{% block contenido %}
+    {% if carreras %}
+        <h2>Listado de Carreras</h2>
+        <ul>
+            {% for carrera in carreras %}
+                <li>{{ carrera }}</li>
+                <a href="{% url 'modificar_carrera' carrera.id %}">✏️ Modificar</a> |
+                <a href="{% url 'eliminar_carrera' carrera.id %}" onclick="return confirm('¿Seguro que quieres eliminar esta carrera?');">❌ Eliminar</a>
+            {% empty %}
+                <li>No hay carreras disponibles.</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No hay carreras disponibles.</p>
+    {% endif %}
+{% endblock %}

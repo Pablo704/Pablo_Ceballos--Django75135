@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crear Auto</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "agregar_carrera" %}>Agregar Carrera</a>
-        <a href={% url "agregar_piloto" %}>Agregar Piloto</a>
-        <a href={% url "listado_de_puntos" %}>Listado</a>
-    </nav>
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Agregar Carrera{% endblock  %}
+
+{% block contenido %}
     <h1>Agregar Carrera</h1>
     <h2>Formulario Para Agregar</h2>
     <form action="" method="POST">
@@ -19,5 +10,4 @@
         {{formulario}}
         <input type="submit" value="Agregar">
     </form>
-</body>
-</html>
+{% endblock  %}

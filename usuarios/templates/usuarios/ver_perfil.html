@@ -1,0 +1,19 @@
+{% extends "templateBase.html" %}
+{% block title_head %}Perfil de {{ user.username }}{% endblock %}
+
+{% block contenido %}
+    <h1>Perfil de {{ user.username }}</h1>
+    <ul>
+        <li><strong>Nombre:</strong> {{ user.first_name }}</li>
+        <li><strong>Apellido:</strong> {{ user.last_name }}</li>
+        <li><strong>Email:</strong> {{ user.email }}</li>
+        <li><strong>Biografía:</strong> {{ user.infoextra.biografia }}</li>
+        <li><strong>Fecha de Nacimiento:</strong> {{ user.infoextra.fecha_nacimiento }}</li>
+        {% if user.infoextra.avatar %}
+            <li><strong>Foto de perfil:</strong><br>
+                <img src="{{ user.infoextra.avatar.url }}" alt="Avatar de {{ user.username }}" width="200">
+            </li>
+        {% endif %}
+    </ul>
+    <a href="{% url 'editar_perfil' %}">Editar perfil</a>
+{% endblock %}

@@ -1,3 +1,5 @@
 from django.contrib import admin
+from inicio.models import Piloto, Carrera
 
-# Register your models here.
+admin.site.register(Piloto)
+admin.site.register(Carrera)

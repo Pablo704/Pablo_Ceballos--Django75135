@@ -1,0 +1,13 @@
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Eliminar Piloto{% endblock  %}
+
+{% block contenido %}
+    <h1>Eliminar Piloto</h1>
+    <h2>Confirmacion de Borrado</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <p>Confirma que quiere eliminar al piloto : {{piloto}}</p>
+        <input type="submit" value="Confirmar">
+    </form>
+{% endblock  %}

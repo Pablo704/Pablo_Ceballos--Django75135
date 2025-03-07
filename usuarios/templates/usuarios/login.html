@@ -1,0 +1,13 @@
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Login{% endblock  %}
+{% block inicio %}
+    Iniciar Sesion
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Iniciar Sesion">
+    </form>
+{% endblock  %}
+{% block contenido %}
+{% endblock  %}

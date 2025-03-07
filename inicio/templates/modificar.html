@@ -1,0 +1,17 @@
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Modificar{% endblock  %}
+
+{% block contenido %}
+    <h1>Modificar</h1>
+    <h2>Formulario Para Modificar</h2>
+    <form action="" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Modificar">
+    </form>
+        {% if piloto.imagen %}
+        <h3>Imagen actual:</h3>
+        <img src="{{ piloto.imagen.url }}" alt="Imagen de {{ piloto.nombre }}" width="300">
+        {% endif %}
+{% endblock  %}

@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "agregar_carrera" %}>Agregar Carrera</a>
-        <a href={% url "agregar_piloto" %}>Agregar Piloto</a>
-        <a href={% url "listado_de_puntos" %}>Listado</a>
-    </nav>
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Listado De Puntos{% endblock  %}
+
+{% block contenido %}
     <h1>Listado de Puntos</h1>
     <form action="">
         {{formulario}}
@@ -21,13 +12,15 @@
     <ul>
         {% for piloto in pilotos %}
         <li>
-            {{piloto}}
+            {{piloto}} |
+            <a href="{% url 'eliminar_piloto' piloto.id %}">❌ Eliminar</a>|
+            <a href={% url "ver_piloto" piloto.id%}>Ver mas</a> |
+            <a href={% url "modificar_piloto" piloto.id %}>✏️ Modificar</a> |
         </li>
         {% endfor %}
     </ul>
-        
+    
     {% else %}
     <p>No hay puntos cargados.</p>
     {% endif %}
-</body>
-</html>
+{% endblock  %}

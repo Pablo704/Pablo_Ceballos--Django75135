@@ -1,0 +1,23 @@
+{% extends "templateBase.html" %}
+{% load static %}
+
+{% block title_head %}Modificar Piloto{% endblock %}
+
+{% block contenido %}
+    <h1>Modificar Piloto</h1>
+    <h2>Formulario Para Modificar</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}  {# Muestra el formulario correctamente estilizado #}
+        <input type="submit" value="Modificar">
+    </form>
+
+    {% if form.instance.imagen %}
+        <h3>Imagen actual:</h3>
+        <img src="{{ form.instance.imagen.url }}" alt="Imagen de {{ form.instance.nombre }}" width="300">
+    {% else %}
+        <p>Este piloto no tiene imagen.</p>
+    {% endif %}
+
+{% endblock %}

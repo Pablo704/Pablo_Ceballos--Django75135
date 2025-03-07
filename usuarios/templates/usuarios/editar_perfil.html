@@ -1,0 +1,18 @@
+{% extends "templateBase.html" %}
+{% load static %}
+{% block title_head %}Editar Perfil{% endblock  %}
+{% block inicio %}
+    Editar Perfil
+    
+{% endblock  %}
+{% block contenido %}
+<h1>Editar Perfil</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ formulario.as_p }}
+        <input type="submit" value="Guardar cambios">
+    </form>
+    <a href={%url "cambiar_pass" %}>Cambiar Contraseña</a>
+    <a href="{% url 'ver_perfil' %}">Volver al perfil</a>
+
+{% endblock  %}
