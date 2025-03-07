@@ -11,7 +11,7 @@ from inicio.models import Carrera, Piloto
 from inicio.forms import AgregarCarrera, AgregarPiloto, Buscar, ModificarPiloto, ModificarCarrera
 
 
-
+@login_required
 def inicio(request,):
     hora_actual = datetime.now()
     carreras = Carrera.objects.all()
@@ -35,7 +35,7 @@ def modificar_carrera(request, carrera_id):
 
     return render(request, 'modificar.html', {'formulario': formulario})
 
-
+@login_required
 def agregar_carrera(request):
     print(request.GET)
     print(request.POST)
@@ -56,7 +56,7 @@ def agregar_carrera(request):
     return render(request, 'agregar_carrera.html', {'formulario' : formulario}, )
 
 
-
+@login_required
 def agregar_piloto(request):
     
     print(request.GET)
@@ -77,7 +77,7 @@ def agregar_piloto(request):
            return redirect('listado_de_puntos')
            
     return render(request, 'agregar_piloto.html', {'formulario' : formulario})
-
+@login_required
 def listado_de_puntos(request):
     pilotos = Piloto.objects.all()
 
